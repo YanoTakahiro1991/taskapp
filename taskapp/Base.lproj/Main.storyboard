@@ -95,20 +95,20 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AD2-Bd-qsP">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AD2-Bd-qsP">
                                 <rect key="frame" x="140" y="181" width="97" height="34"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="内容" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rCC-ox-Myn">
-                                <rect key="frame" x="10" y="295" width="394" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="内容" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rCC-ox-Myn">
+                                <rect key="frame" x="10" y="225" width="394" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="TxJ-7Z-Ddt">
-                                <rect key="frame" x="10" y="335" width="394" height="128"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="TxJ-7Z-Ddt">
+                                <rect key="frame" x="10" y="256" width="394" height="120"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="120" id="Mwy-gS-ASi"/>
@@ -126,22 +126,25 @@
                         <viewLayoutGuide key="safeArea" id="vB8-tN-bCy"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="AD2-Bd-qsP" firstAttribute="leading" secondItem="vB8-tN-bCy" secondAttribute="leading" constant="140" id="02J-iX-49v"/>
                             <constraint firstItem="vB8-tN-bCy" firstAttribute="trailing" secondItem="rCC-ox-Myn" secondAttribute="trailing" constant="10" id="DsP-lb-Sse"/>
                             <constraint firstItem="rCC-ox-Myn" firstAttribute="leading" secondItem="vB8-tN-bCy" secondAttribute="leading" constant="10" id="M6g-2I-pPT"/>
+                            <constraint firstItem="vB8-tN-bCy" firstAttribute="trailing" secondItem="AD2-Bd-qsP" secondAttribute="trailing" constant="177" id="P4x-fw-NNk"/>
                             <constraint firstItem="TxJ-7Z-Ddt" firstAttribute="top" secondItem="rCC-ox-Myn" secondAttribute="bottom" constant="10" id="PdS-vQ-dtf"/>
                             <constraint firstItem="vB8-tN-bCy" firstAttribute="trailing" secondItem="TxJ-7Z-Ddt" secondAttribute="trailing" constant="10" id="VGc-3O-WrJ"/>
                             <constraint firstItem="kdD-KL-or4" firstAttribute="leading" secondItem="vB8-tN-bCy" secondAttribute="leading" constant="10" id="X1q-pX-E2B"/>
                             <constraint firstItem="vB8-tN-bCy" firstAttribute="trailing" secondItem="kdD-KL-or4" secondAttribute="trailing" constant="10" id="cZA-0f-MtH"/>
                             <constraint firstItem="TxJ-7Z-Ddt" firstAttribute="leading" secondItem="vB8-tN-bCy" secondAttribute="leading" constant="10" id="gF1-UW-MLI"/>
+                            <constraint firstItem="AD2-Bd-qsP" firstAttribute="top" secondItem="kdD-KL-or4" secondAttribute="bottom" constant="62" id="lfO-3r-0ki"/>
                             <constraint firstItem="rCC-ox-Myn" firstAttribute="top" secondItem="AD2-Bd-qsP" secondAttribute="bottom" constant="10" id="pYa-Y6-b4x"/>
                             <constraint firstItem="kdD-KL-or4" firstAttribute="top" secondItem="vB8-tN-bCy" secondAttribute="top" constant="10" id="qBH-Sg-Bw5"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="8N1-w9-c7m"/>
                     <connections>
-                        <outlet property="DatePicker" destination="e9e-3d-Xtv" id="x6h-rB-Ewb"/>
-                        <outlet property="TextField" destination="AD2-Bd-qsP" id="c0j-gc-f6N"/>
-                        <outlet property="TextView" destination="TxJ-7Z-Ddt" id="3nw-HJ-bqF"/>
+                        <outlet property="contentsTextView" destination="TxJ-7Z-Ddt" id="dZs-lH-61I"/>
+                        <outlet property="datePicker" destination="e9e-3d-Xtv" id="97m-J0-MgP"/>
+                        <outlet property="titleTextField" destination="AD2-Bd-qsP" id="m77-hi-tjl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KaB-Sa-FpU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
