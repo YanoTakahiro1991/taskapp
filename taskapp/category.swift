@@ -1,8 +1,7 @@
 import RealmSwift
-
-class Task: Object {
+class category: Object {
     @objc dynamic var category = ""
-  // 管理用 ID。プライマリーキー
+    // 管理用 ID。プライマリーキー
     @objc dynamic var id = 0
     
     // タイトル
@@ -17,6 +16,5 @@ class Task: Object {
     // id をプライマリーキーとして設定
     override static func primaryKey() -> String? {
         return "id"
-        
     }
 }

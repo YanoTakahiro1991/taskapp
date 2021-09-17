@@ -5,13 +5,14 @@ import UserNotifications
 
 class InputViewController: UIViewController {
     
+    @IBOutlet weak var category: UITextField!
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var contentsTextView: UITextView!
     @IBOutlet weak var datePicker: UIDatePicker!
     
     let realm = try! Realm()
     var task: Task!
-    
+  
     
     
     override func viewDidLoad() {
@@ -23,6 +24,7 @@ class InputViewController: UIViewController {
         self.view.addGestureRecognizer(tapGesture)
         
         titleTextField.text = task.title
+        category.text = task.category
         contentsTextView.text = task.contents
         datePicker.date = task.date
     }
@@ -32,6 +34,8 @@ class InputViewController: UIViewController {
         
         try! realm.write {
             self.task.title = self.titleTextField.text!
+            
+            self.task.category = self.category.text!
             
             self.task.contents = self.contentsTextView.text
             

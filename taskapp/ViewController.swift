@@ -2,9 +2,10 @@ import UIKit
 import RealmSwift
 import UserNotifications
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource,UISearchBarDelegate {
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var SearchBar: UISearchBar!
     
     let realm = try! Realm()
     
@@ -13,15 +14,37 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        SearchBar.delegate = self
         tableView.delegate = self
         tableView.dataSource = self
+        
+    }
+    
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        
+        view.endEditing(true)
+        
+        if let word = SearchBar.text {
+            print(word)
+            print(taskArray)
+            
+            taskArray = realm.objects(Task.self).filter ("category == '\(word)'")
+        
+            tableView.reloadData()
+            
+        }
     }
     
     // データの数（＝セルの数）を返すメソッド
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return taskArray.count
         
+        
+        
+        
     }
+    
     // 各セルの内容を返すメソッド
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // 再利用可能な cell を得る
@@ -50,6 +73,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         return .delete
     }
     
+    
     // Delete ボタンが押された時に呼ばれるメソッド
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         // --- ここから ---
@@ -67,15 +91,15 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 self.realm.delete(self.taskArray[indexPath.row])
                 tableView.deleteRows(at: [indexPath], with: .fade)
             }
-        
-    
-    center.getPendingNotificationRequests { (requests: [UNNotificationRequest]) in
-    for request in requests {
-    print("/---------------")
-    print(request)
-    print("---------------/")
-    }
-    }
+            
+            
+            center.getPendingNotificationRequests { (requests: [UNNotificationRequest]) in
+                for request in requests {
+                    print("/---------------")
+                    print(request)
+                    print("---------------/")
+                }
+            }
         }
     }// --- ここまで変更 ---
     // segue で画面遷移する時に呼ばれる
@@ -99,9 +123,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tableView.reloadData()
+        
     }
     
 }
+
+
 
 
 
