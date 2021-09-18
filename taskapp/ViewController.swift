@@ -20,22 +20,22 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
     }
     
-    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        
         view.endEditing(true)
         
         if let word = SearchBar.text {
             print(word)
             print(taskArray)
             
-            taskArray = realm.objects(Task.self).filter ("category == '\(word)'")
-        
+            if word.isEmpty {
+                taskArray = realm.objects(Task.self)
+                
+            }else{
+                taskArray = realm.objects(Task.self).filter("category == '\(word)'")
+            }
             tableView.reloadData()
-            
         }
     }
-    
     // データの数（＝セルの数）を返すメソッド
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return taskArray.count

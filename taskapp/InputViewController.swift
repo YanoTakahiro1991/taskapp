@@ -41,7 +41,7 @@ class InputViewController: UIViewController {
             
             self.task.date = self.datePicker.date
             
-            self.realm.add(self.task, update: .modified)
+            self.realm.add(self.task, update: .all)
         }
         
         setNotification(task: task)
